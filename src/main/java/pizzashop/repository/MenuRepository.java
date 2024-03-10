@@ -1,5 +1,6 @@
 package pizzashop.repository;
 
+import pizzashop.exceptions.OrderException;
 import pizzashop.model.PizzaItem;
 
 import java.io.*;
@@ -11,7 +12,7 @@ public class MenuRepository {
     private static String filename = "data/menu.txt";
     private List<PizzaItem> listMenu;
 
-    private void readMenu(){
+    private void readMenu() throws OrderException {
         File file = new File(filename);
         this.listMenu= new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -21,7 +22,7 @@ public class MenuRepository {
                 listMenu.add(menuItem);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new OrderException();
         }
     }
 
@@ -35,7 +36,7 @@ public class MenuRepository {
         return item;
     }
 
-    public List<PizzaItem> getMenu(){
+    public List<PizzaItem> getMenu() throws OrderException {
         readMenu();//create a new menu for each table, on request
         return listMenu;
     }

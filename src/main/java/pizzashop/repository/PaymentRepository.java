@@ -1,5 +1,6 @@
 package pizzashop.repository;
 
+import pizzashop.exceptions.PaymentException;
 import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 
@@ -42,7 +43,7 @@ public class PaymentRepository {
         return item;
     }
 
-    public void add(Payment payment){
+    public void add(Payment payment) throws PaymentException {
         paymentList.add(payment);
         writeAll();
     }
@@ -51,7 +52,7 @@ public class PaymentRepository {
         return paymentList;
     }
 
-    public void writeAll(){
+    public void writeAll() throws PaymentException {
         File file = new File(filename);
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
@@ -61,7 +62,7 @@ public class PaymentRepository {
                 bw.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new PaymentException();
         }
     }
 

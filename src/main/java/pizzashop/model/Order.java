@@ -1,6 +1,7 @@
 package pizzashop.model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Order {
@@ -31,5 +32,9 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    public List<OrderStatus> getAllStatusValues() {
+        return Arrays.asList(OrderStatus.PLACED, OrderStatus.PROCESSING, OrderStatus.SERVED, OrderStatus.PAID);
     }
 }

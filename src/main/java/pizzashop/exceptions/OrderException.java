@@ -1,4 +1,4 @@
 package pizzashop.exceptions;
 
-public class OrderException extends Exception {
+public class OrderException extends Throwable {
 }

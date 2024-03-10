@@ -2,6 +2,7 @@ package pizzashop.service;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import pizzashop.exceptions.PaymentException;
 import pizzashop.model.PaymentType;
 
 import java.util.Optional;
@@ -46,10 +47,18 @@ public class PaymentAlert implements PaymentOperation {
         Optional<ButtonType> result = paymentAlert.showAndWait();
         if (result.get() == cardPayment) {
             cardPayment();
-            service.addPayment(tableNumber, PaymentType.Card,totalAmount, (new Random()).nextInt());
+            try {
+                service.addPayment(tableNumber, PaymentType.Card,totalAmount, (new Random()).nextInt());
+            } catch (PaymentException e) {
+                e.printStackTrace();
+            }
         } else if (result.get() == cashPayment) {
             cashPayment();
-            service.addPayment(tableNumber, PaymentType.Cash,totalAmount, (new Random()).nextInt());
+            try {
+                service.addPayment(tableNumber, PaymentType.Cash,totalAmount, (new Random()).nextInt());
+            } catch (PaymentException e) {
+                e.printStackTrace();
+            }
         } else if (result.get() == cancel) {
              cancelPayment();
         } else {

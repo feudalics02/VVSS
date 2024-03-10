@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import pizzashop.exceptions.OrderException;
 import pizzashop.model.PizzaItem;
 import pizzashop.service.PaymentAlert;
 import pizzashop.service.PizzaService;
@@ -66,11 +67,14 @@ public class OrdersGUIController {
     public void setService(PizzaService service, int tableNumber){
         this.service=service;
         this.tableNumber=tableNumber;
-        initData();
-
+        try {
+            initData();
+        } catch (OrderException e) {
+            e.printStackTrace();
+        }
     }
 
-    private void initData(){
+    private void initData() throws OrderException {
         menuData = FXCollections.observableArrayList(service.getMenuData());
         menuData.setAll(service.getMenuData());
         orderTable.setItems(menuData);

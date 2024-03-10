@@ -1,5 +1,7 @@
 package pizzashop.service;
 
+import pizzashop.exceptions.OrderException;
+import pizzashop.exceptions.PaymentException;
 import pizzashop.model.PizzaItem;
 import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
@@ -18,11 +20,11 @@ public class PizzaService {
         this.payRepo=payRepo;
     }
 
-    public List<PizzaItem> getMenuData(){return menuRepo.getMenu();}
+    public List<PizzaItem> getMenuData() throws OrderException {return menuRepo.getMenu();}
 
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
-    public void addPayment(int table, PaymentType type, double amount, int orderId){
+    public void addPayment(int table, PaymentType type, double amount, int orderId) throws PaymentException {
         Payment payment= new Payment(table, type, amount, orderId);
         payRepo.add(payment);
     }
