@@ -6,6 +6,7 @@ import pizzashop.model.PaymentType;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
@@ -37,7 +38,7 @@ public class PaymentRepository {
         int tableNumber= Integer.parseInt(st.nextToken());
         String type= st.nextToken();
         double amount = Double.parseDouble(st.nextToken());
-        item = new Payment(tableNumber, PaymentType.valueOf(type), amount);
+        item = new Payment(tableNumber, PaymentType.valueOf(type), amount, (new Random()).nextInt());
         return item;
     }
 

@@ -5,10 +5,13 @@ public class Payment {
     private int tableNumber;
     private PaymentType type;
     private double amount;
-    public Payment(int tableNumber, PaymentType type, double amount) {
+    private int orderId;
+
+    public Payment(int tableNumber, PaymentType type, double amount, int orderId) {
         this.tableNumber = tableNumber;
         this.type = type;
         this.amount = amount;
+        this.orderId = orderId;
     }
 
     public int getTableNumber() {
@@ -33,6 +36,14 @@ public class Payment {
 
     public void setAmount(double amount) {
         this.amount = amount;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     @Override

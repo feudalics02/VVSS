@@ -1,6 +1,6 @@
 package pizzashop.service;
 
-import pizzashop.model.MenuDataModel;
+import pizzashop.model.PizzaItem;
 import pizzashop.model.Payment;
 import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
@@ -18,12 +18,12 @@ public class PizzaService {
         this.payRepo=payRepo;
     }
 
-    public List<MenuDataModel> getMenuData(){return menuRepo.getMenu();}
+    public List<PizzaItem> getMenuData(){return menuRepo.getMenu();}
 
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
-    public void addPayment(int table, PaymentType type, double amount){
-        Payment payment= new Payment(table, type, amount);
+    public void addPayment(int table, PaymentType type, double amount, int orderId){
+        Payment payment= new Payment(table, type, amount, orderId);
         payRepo.add(payment);
     }
 

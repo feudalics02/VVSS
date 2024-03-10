@@ -5,6 +5,7 @@ import javafx.scene.control.ButtonType;
 import pizzashop.model.PaymentType;
 
 import java.util.Optional;
+import java.util.Random;
 
 public class PaymentAlert implements PaymentOperation {
     private PizzaService service;
@@ -45,10 +46,10 @@ public class PaymentAlert implements PaymentOperation {
         Optional<ButtonType> result = paymentAlert.showAndWait();
         if (result.get() == cardPayment) {
             cardPayment();
-            service.addPayment(tableNumber, PaymentType.Card,totalAmount);
+            service.addPayment(tableNumber, PaymentType.Card,totalAmount, (new Random()).nextInt());
         } else if (result.get() == cashPayment) {
             cashPayment();
-            service.addPayment(tableNumber, PaymentType.Cash,totalAmount);
+            service.addPayment(tableNumber, PaymentType.Cash,totalAmount, (new Random()).nextInt());
         } else if (result.get() == cancel) {
              cancelPayment();
         } else {
