@@ -39,7 +39,7 @@ public class PaymentRepository {
         int tableNumber= Integer.parseInt(st.nextToken());
         String type= st.nextToken();
         double amount = Double.parseDouble(st.nextToken());
-        item = new Payment(tableNumber, PaymentType.valueOf(type), amount, (new Random()).nextInt());
+        item = new Payment(tableNumber, PaymentType.valueOf(type), amount);
         return item;
     }
 

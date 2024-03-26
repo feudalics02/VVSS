@@ -48,14 +48,14 @@ public class PaymentAlert implements PaymentOperation {
         if (result.get() == cardPayment) {
             cardPayment();
             try {
-                service.addPayment(tableNumber, PaymentType.Card,totalAmount, (new Random()).nextInt());
+                service.addPayment(tableNumber, PaymentType.Card,totalAmount);
             } catch (PaymentException e) {
                 e.printStackTrace();
             }
         } else if (result.get() == cashPayment) {
             cashPayment();
             try {
-                service.addPayment(tableNumber, PaymentType.Cash,totalAmount, (new Random()).nextInt());
+                service.addPayment(tableNumber, PaymentType.Cash,totalAmount);
             } catch (PaymentException e) {
                 e.printStackTrace();
             }

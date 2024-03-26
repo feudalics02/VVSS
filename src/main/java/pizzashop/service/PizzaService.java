@@ -24,8 +24,8 @@ public class PizzaService {
 
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
-    public void addPayment(int table, PaymentType type, double amount, int orderId) throws PaymentException {
-        Payment payment= new Payment(table, type, amount, orderId);
+    public void addPayment(int table, PaymentType type, double amount) throws PaymentException {
+        Payment payment= new Payment(table, type, amount);
         payRepo.add(payment);
     }
 
