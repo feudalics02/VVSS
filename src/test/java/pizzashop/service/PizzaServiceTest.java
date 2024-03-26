@@ -1,13 +1,10 @@
 package pizzashop.service;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.junit.jupiter.api.*;
 import pizzashop.exceptions.PaymentException;
 import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PizzaServiceTest {
 
@@ -15,9 +12,10 @@ class PizzaServiceTest {
     private int table;
     private PaymentType type;
 
-    private MenuRepository menuRepo = new MenuRepository();
-    private PaymentRepository payRepo = new PaymentRepository();
-    private PizzaService service = new PizzaService(menuRepo, payRepo);
+    private final MenuRepository menuRepo = new MenuRepository();
+    private final PaymentRepository payRepo = new PaymentRepository();
+    private final PizzaService service = new PizzaService(menuRepo, payRepo);
+
     private int paymentsSize = service.getPayments().size();
 
     @BeforeEach
@@ -30,13 +28,16 @@ class PizzaServiceTest {
     void addPayment_BVA_valid_table() {
         amount = 2;
         table = 1;
+
         assert service.getPayments().size() == paymentsSize;
+
         try {
             service.addPayment(table, type, amount);
 
         } catch (PaymentException e) {
             assert false;
         }
+
         assert service.getPayments().size() == paymentsSize + 1;
         paymentsSize++;
     }
@@ -60,12 +61,15 @@ class PizzaServiceTest {
     void addPayment_BVA_valid_amount() {
         amount = 1;
         table = 3;
+
         assert service.getPayments().size() == paymentsSize;
+
         try {
             service.addPayment(table, type, amount);
         } catch (PaymentException e) {
             assert false;
         }
+
         assert service.getPayments().size() == paymentsSize + 1;
         paymentsSize++;
     }
@@ -111,11 +115,11 @@ class PizzaServiceTest {
         }
     }
 
-    //@Test
     @RepeatedTest(2)
     void addPayment_ECP_invalid_table_1() {
         amount = 2;
         table = -4;
+
         try {
             service.addPayment(table, type, amount);
             assert false;
@@ -127,7 +131,7 @@ class PizzaServiceTest {
     @Test
     void addPayment_ECP_invalid_table_2() {
         amount = 2;
-        // table = 0.5;
+
         try {
             service.addPayment(0.5, type, amount);
             assert false;
@@ -135,6 +139,7 @@ class PizzaServiceTest {
             assert e.getMessage().equals("Invalid table type");
         }
     }
+
     @Test
     @Disabled("Pending feature implementation")
     void dummyTest() {
