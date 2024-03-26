@@ -45,7 +45,7 @@ public class PaymentRepository {
 
     public void add(Payment payment) throws PaymentException {
         paymentList.add(payment);
-        writeAll();
+        //writeAll();
     }
 
     public List<Payment> getAll(){

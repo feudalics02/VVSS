@@ -24,8 +24,18 @@ public class PizzaService {
 
     public List<Payment> getPayments(){return payRepo.getAll(); }
 
-    public void addPayment(int table, PaymentType type, double amount) throws PaymentException {
-        Payment payment= new Payment(table, type, amount);
+    public void addPayment(Object table, PaymentType type, double amount) throws PaymentException {
+        if(!(table instanceof Integer)){
+            throw new PaymentException("Invalid table type");
+        }
+
+        if((int)table<1 || (int)table > 8){
+            throw new PaymentException("Invalid table");
+        }
+        if(amount<1 || amount>100000){
+            throw new PaymentException("Invalid amount");
+        }
+        Payment payment= new Payment((int)table, type, amount);
         payRepo.add(payment);
     }
 
