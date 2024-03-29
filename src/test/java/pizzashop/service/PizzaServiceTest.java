@@ -79,6 +79,7 @@ class PizzaServiceTest {
     void addPayment_BVA_invalid_amount() {
         amount = 0;
         table = 2;
+
         try {
             service.addPayment(table, type, amount);
             assert false;
@@ -92,12 +93,15 @@ class PizzaServiceTest {
     void addPayment_ECP_valid_amount() {
         amount = 2;
         table = 3;
+
         assert service.getPayments().size() == paymentsSize;
+
         try {
             service.addPayment(table, type, amount);
         } catch (PaymentException e) {
             assert false;
         }
+
         assert service.getPayments().size() == paymentsSize + 1;
         paymentsSize++;
     }
@@ -107,6 +111,7 @@ class PizzaServiceTest {
     void addPayment_ECP_invalid_amount() {
         amount = -5;
         table = 3;
+
         try {
             service.addPayment(table, type, amount);
             assert false;
