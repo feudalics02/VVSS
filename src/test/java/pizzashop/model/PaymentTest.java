@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PaymentTest {
+public class PaymentTest {
     private final Payment payment = new Payment(3, PaymentType.Card, 100);
 
     @Test

@@ -14,7 +14,7 @@ import java.util.List;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-class PizzaServiceLab3Test {
+public class PizzaServiceLab3Test {
     private double amount;
 
     private PaymentType type;

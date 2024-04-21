@@ -10,7 +10,7 @@ import pizzashop.repository.PaymentRepository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-class PaymentServiceIntegrationAllTest {
+public class PaymentServiceIntegrationAllTest {
     private final PaymentRepository paymentRepository = new PaymentRepository("data/payment_test.txt");
 
     private final Payment payment = new Payment(1, PaymentType.Card, 100.5);

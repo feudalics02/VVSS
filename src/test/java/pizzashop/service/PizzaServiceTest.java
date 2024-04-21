@@ -6,7 +6,7 @@ import pizzashop.model.PaymentType;
 import pizzashop.repository.MenuRepository;
 import pizzashop.repository.PaymentRepository;
 
-class PizzaServiceTest {
+public class PizzaServiceTest {
 
     private double amount;
     private int table;
