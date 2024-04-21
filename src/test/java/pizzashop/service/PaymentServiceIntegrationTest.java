@@ -14,7 +14,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class PaymentServiceIntegrationTest {
-    private final PaymentRepository paymentRepository = new PaymentRepository("src/test/data/payments.txt");
+    private final PaymentRepository paymentRepository = new PaymentRepository("data/payment_test.txt");
 
     @Mock
     private final Payment payment = mock(Payment.class);

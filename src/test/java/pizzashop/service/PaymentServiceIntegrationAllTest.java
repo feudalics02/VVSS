@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
 class PaymentServiceIntegrationAllTest {
-    private final PaymentRepository paymentRepository = new PaymentRepository("src/test/data/payments.txt");
+    private final PaymentRepository paymentRepository = new PaymentRepository("data/payment_test.txt");
 
     private final Payment payment = new Payment(1, PaymentType.Card, 100.5);
 
