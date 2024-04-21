@@ -11,11 +11,16 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 public class PaymentRepository {
-    private static String filename = "data/payments.txt";
+    private String filename;
     private List<Payment> paymentList;
 
+    public PaymentRepository(String filename) {
+        this.filename = filename;
 
-    public PaymentRepository(){
+        if (filename.isEmpty()) {
+            this.filename = "data/payments.txt";
+        }
+
         this.paymentList = new ArrayList<>();
         readPayments();
     }
@@ -46,7 +51,7 @@ public class PaymentRepository {
 
     public void add(Payment payment) throws PaymentException {
         paymentList.add(payment);
-        //writeAll();
+//        writeAll();
     }
 
     public List<Payment> getAll(){

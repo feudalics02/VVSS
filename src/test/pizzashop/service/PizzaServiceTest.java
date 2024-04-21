@@ -13,7 +13,7 @@ class PizzaServiceTest {
     private PaymentType type;
 
     private final MenuRepository menuRepo = new MenuRepository();
-    private final PaymentRepository payRepo = new PaymentRepository();
+    private final PaymentRepository payRepo = new PaymentRepository("data/payments.txt");
     private final PizzaService service = new PizzaService(menuRepo, payRepo);
 
     private int paymentsSize = service.getPayments().size();
