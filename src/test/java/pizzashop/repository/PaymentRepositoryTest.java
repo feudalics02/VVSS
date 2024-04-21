@@ -1,6 +1,7 @@
 package pizzashop.repository;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 import org.mockito.Mock;
 import pizzashop.exceptions.PaymentException;
 import pizzashop.model.Payment;
@@ -13,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PaymentRepositoryTest {
     private final PaymentRepository paymentRepository = new PaymentRepository("data/payment_test.txt");
 
